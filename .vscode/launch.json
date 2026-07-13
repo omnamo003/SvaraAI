@@ -1,0 +1,66 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "FastAPI: Local Launch",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "app.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8000",
+        "--reload"
+      ],
+      "cwd": "${workspaceFolder}/backend",
+      "jinja": true,
+      "env": {
+        "DATABASE_URL": "postgresql://svara_user:svara_secure_pass_123@127.0.0.1:5432/svara_db",
+        "REDIS_URL": "redis://127.0.0.1:6379/0",
+        "MINIO_ENDPOINT": "127.0.0.1:9000",
+        "JWT_SECRET": "super_secret_jwt_key_svara_ai_2026"
+      },
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "FastAPI: Remote Attach (Docker)",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 5678
+      },
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/backend",
+          "remoteRoot": "/app"
+        }
+      ]
+    },
+    {
+      "name": "Celery Worker: Remote Attach (Docker)",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": {
+        "host": "localhost",
+        "port": 5679
+      },
+      "pathMappings": [
+        {
+          "localRoot": "${workspaceFolder}/worker",
+          "remoteRoot": "/app"
+        }
+      ]
+    },
+    {
+      "name": "Next.js: Client-side Browser Debug",
+      "type": "chrome",
+      "request": "launch",
+      "name": "Next.js: Debug in Browser",
+      "url": "http://localhost",
+      "webRoot": "${workspaceFolder}/web"
+    }
+  ]
+}

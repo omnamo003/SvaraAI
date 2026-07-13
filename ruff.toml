@@ -1,0 +1,56 @@
+# Target Python version 3.10
+target-version = "py310"
+
+# Set target line length to 88 (consistent with Black)
+line-length = 88
+
+# Rules directories to search
+exclude = [
+    ".git",
+    ".venv",
+    "venv",
+    "node_modules",
+    "build",
+    "dist",
+    "__pycache__",
+    ".pytest_cache",
+    ".ruff_cache"
+]
+
+[lint]
+# Enable standard rules
+# E/W: Pycodestyle error and warning
+# F: Pyflakes
+# I: Isort (import sorting)
+# N: Pep8-naming
+# UP: Pyupgrade (modern python upgrade recommendations)
+# B: Flake8-bugbear (common bug patterns)
+# C4: Flake8-comprehensions
+# SIM: Flake8-simplify (suggest code simplifications)
+# RUF: Ruff-specific rules
+select = [
+    "E", "W",   # pycodestyle
+    "F",        # Pyflakes
+    "I",        # isort
+    "N",        # pep8-naming
+    "UP",       # pyupgrade
+    "B",        # flake8-bugbear
+    "C4",       # flake8-comprehensions
+    "SIM",      # flake8-simplify
+    "RUF"       # Ruff rules
+]
+
+# Ignore specific rule sets if needed (e.g. line length checks in markdown code blocks)
+ignore = []
+
+# Allow unused imports in __init__.py files
+per-file-ignores = {
+    "__init__.py" = ["F401"]
+}
+
+[lint.isort]
+# Configure import sort grouping
+combine-as-imports = true
+force-wrap-aliases = true
+known-first-party = ["app"]
+section-order = ["future", "standard-library", "third-party", "first-party", "local-folder"]

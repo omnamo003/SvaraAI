@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "ms-python.python",              // Python language support
+    "charliermarsh.ruff",            // Fast Python linting and formatting
+    "esbenp.prettier-vscode",        // Prettier for JS/TS/CSS/JSON/Markdown
+    "dbaeumer.vscode-eslint",        // ESLint for React/TS linting
+    "ms-azuretools.vscode-docker",    // Docker Compose dashboard and autocomplete
+    "ms-vscode-remote.remote-wsl",   // WSL support for Windows developers
+    "bradlc.vscode-tailwindcss",     // Tailwind CSS autocomplete
+    "redhat.vscode-yaml",            // YAML schemas and autocomplete
+    "editorconfig.editorconfig"      // Standard editor behavior across systems
+  ]
+}

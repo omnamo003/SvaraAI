@@ -1,0 +1,25 @@
+# local development overrides for ShivaAI docker-compose
+# Copy this file to `docker-compose.override.yml` to apply these configurations:
+# cp docker-compose.override.yml.example docker-compose.override.yml
+
+version: '3.8'
+
+services:
+  backend:
+    # Expose FastAPI debugpy port for VS Code debugging attachment
+    ports:
+      - "5678:5678"
+    # Command override to launch with debugpy
+    command: python -m debugpy --listen 0.0.0.0:5678 -m uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+    # Additional local environment variables
+    environment:
+      - LOG_LEVEL=DEBUG
+
+  worker:
+    # Expose Celery worker debugpy port for VS Code debugging attachment
+    ports:
+      - "5679:5679"
+    # Command override to launch with debugpy
+    command: python -m debugpy --listen 0.0.0.0:5679 -m celery -A app.main.celery_app worker --loglevel=info
+    environment:
+      - LOG_LEVEL=DEBUG
